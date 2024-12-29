@@ -1,0 +1,76 @@
+[tool.poetry]
+name = "ntnu-captcha-service"
+version = "0.1.0"
+description = ""
+authors = ["jw910731 <jw910731@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ntnu_captcha_service", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "3.12.x"
+fastapi = {extras = ["standard"], version = "^0.115.6"}
+pydantic = "^2.10.4"
+pillow = "^11.0.0"
+numpy = "^2.2.1"
+easyocr = "^1.7.2"
+opencv-python-headless = "^4.10.0.84"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.8.4"
+pytest = "^8.3.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+
+[tool.ruff]
+line-length = 120
+select = [
+    # Pyflakes
+    "F",
+    # Pycodestyle
+    "E",
+    "W",
+    # isort
+    "I001",
+]
+
+src = ["src", "tests"]
+
+ignore = []
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".devenv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    ".venv",
+]
+per-file-ignores = { }
+
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+target-version = "py312"
+
+[tool.ruff.mccabe]
+max-complexity = 10
