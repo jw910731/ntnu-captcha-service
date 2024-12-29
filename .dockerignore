@@ -1,0 +1,10 @@
+.devenv
+.direnv
+.pytest_cache
+.venv
+tests
+.envrc
+flake.nix
+flake.lock
+Makefile
+*.jpg

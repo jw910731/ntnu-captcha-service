@@ -1,0 +1,18 @@
+{
+    "listeners": {
+        "*:80": {
+            "pass": "applications/fastapi"
+        }
+    },
+
+    "applications": {
+        "fastapi": {
+            "type": "python 3.12",
+            "path": "/srv/src",
+            "home": "/srv/.venv",
+            "module": "ntnu_captcha_service.route",
+            "callable": "app",
+            "protocol": "asgi"
+        }
+    }
+}

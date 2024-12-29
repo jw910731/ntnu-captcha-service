@@ -28,10 +28,12 @@ class CaptchaSolver:
         mask = mask[:, :, np.newaxis]
         mask = np.repeat(mask, repeats=3, axis=2)
         self.image = mask
-        cv2.imwrite("mask.jpg", self.image)
 
     def solve(self):
-        allow_lists = [(string.ascii_lowercase, r"^[a-z]+$", []), (string.digits + "x+-=", r"^[0-9][+\-x][0-9]", [("=", "")])]
+        allow_lists = [
+            (string.ascii_lowercase, r"^[a-z]+$", []),
+            (string.digits + "x+-=", r"^[0-9][+\-x][0-9]", [("=", "")]),
+        ]
 
         def process(allowlist: str, regex: str, replace_rules: list[tuple[str, str]]):
             text = "".join(reader.readtext(self.image, detail=0, allowlist=allowlist, link_threshold=0))
